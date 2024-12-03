@@ -1,0 +1,15 @@
+def count_even_numbers(file_path):
+    try:
+        with open(file_path, 'r') as file:
+            data = file.read()
+            numbers = map(int, data.split(','))
+            even_count = sum(1 for number in numbers if number % 2 == 0)
+            print(f"Count of even numbers: {even_count}")
+    except FileNotFoundError:
+        print("File not found.")
+    except ValueError:
+        print("Error reading numbers from file.")
+
+with open("numbers.txt", "w") as file:
+    file.write("1,2,71,24,56,23,14,45,12")
+count_even_numbers("numbers.txt")
